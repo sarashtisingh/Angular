@@ -1,0 +1,41 @@
+<h1 align="center" class="bold">
+    Student Details
+</h1>
+<br/>
+<br/>
+<h3>
+    New Entries
+</h3>
+<form (submit)="addEmployee()" class="form-group">
+    <input class="form-control" type="text" [readOnly]="editMode" placeholder="ID" name="id" [(ngModel)]="this.employee.id"><br>
+    <input class="form-control" type="text" placeholder="name" name="name" [(ngModel)]="this.employee.name"><br>
+    <input class="form-control" type="text" placeholder="city" name="city" [(ngModel)]="this.employee.city"><br>
+    
+    <button class="btn btn-primary" type="submit">{{editMode ? 'Update' : 'Save'}}</button>
+    
+</form>
+
+{{empList | json}}
+{{source}}
+
+<h3>
+   Student Table 
+</h3>
+
+
+    <table class="table" border="1">
+        <thead class="table-dark">
+            <th scope="col">ID </th>
+            <th scope="col">Name </th>
+            <th scope="col">City </th>
+            <th scope="col">Activity</th>
+        </thead>
+        <tr *ngFor="let emp of empList">
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.city}}</td>
+            <td><button class="btn btn-primary" (click)="editEmployee(emp)"> Update </button>
+                <button class="btn btn-danger" (click)="deleteEmployee(emp)"> Delete </button>
+            </td>
+        </tr>
+    </table>
